@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
     std::ifstream jsonFile("test_examples/json_example.json", std::ios::binary);
 
     if (!jsonFile.is_open()) {
-        LOG(INFO) << "Error opening";
+        LOG(ERROR) << "Error opening";
         return 0;
     }
 
