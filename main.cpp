@@ -15,18 +15,21 @@ using std::endl;
 
 int main(int argc, char* argv[])
 {
+    google::InitGoogleLogging(argv[0]);
+    FLAGS_logtostderr = true;
+
     Json::Value root;
 
     std::ifstream jsonFile("test_examples/json_example.json", std::ios::binary);
 
     if (!jsonFile.is_open()) {
-        cout << "Error opening" << endl;
+        LOG(INFO) << "Error opening";
         return 0;
     }
 
     jsonFile >> root;
     const auto encoding = root["encoding"].asString();
-    cout << encoding << endl;
+    LOG(INFO) << encoding;
 
     const auto& plugInsJson = root["plug-ins"];
     vector<string> plugIns;
@@ -35,7 +38,7 @@ int main(int argc, char* argv[])
     }
 
     for (const auto& str : plugIns) {
-        cout << str << endl;
+        LOG(INFO) << str;
     }
 
     const auto& indentJson = root["indent"];
@@ -48,6 +51,8 @@ int main(int argc, char* argv[])
     }
 
     for (const auto& p : indent) {
-        cout << p.first << ": " << p.second << endl;
+        LOG(INFO) << p.first << ": " << p.second;
     }
+
+    google::ShutdownGoogleLogging();
 }
