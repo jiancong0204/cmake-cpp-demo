@@ -1,9 +1,11 @@
 #include "printer.h"
 
-void Printer::Print() {
-    std::cout << code_ << std::endl;
+void Printer::Printer::Print()
+{
+    LOG(INFO) << Logger::MAGENT << code_ << Logger::END;
 }
 
-void Printer::SetCode(const int& code) {
+void Printer::Printer::SetCode(const int& code)
+{
     code_ = code;
 }

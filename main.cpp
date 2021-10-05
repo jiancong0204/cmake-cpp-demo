@@ -1,10 +1,10 @@
-#include <glog/logging.h>
 #include <json/json.h>
 
 #include <fstream>
 #include <iostream>
 #include <vector>
 
+#include "logger/logger.hpp"
 #include "printer.h"
 
 using string = std::string;
@@ -15,21 +15,20 @@ using std::endl;
 
 int main(int argc, char* argv[])
 {
-    google::InitGoogleLogging(argv[0]);
-    FLAGS_logtostderr = true;
+    Logger::Init(argv[0]);
 
     Json::Value root;
 
     std::ifstream jsonFile("test_examples/json_example.json", std::ios::binary);
 
     if (!jsonFile.is_open()) {
-        LOG(ERROR) << "Error opening";
+        LOG(FATAL) << "Error opening";
         return 0;
     }
 
     jsonFile >> root;
     const auto encoding = root["encoding"].asString();
-    LOG(INFO) << encoding;
+    LOG(ERROR) << encoding;
 
     const auto& plugInsJson = root["plug-ins"];
     vector<string> plugIns;
@@ -38,7 +37,7 @@ int main(int argc, char* argv[])
     }
 
     for (const auto& str : plugIns) {
-        LOG(INFO) << str;
+        LOG(WARNING) << str;
     }
 
     const auto& indentJson = root["indent"];
@@ -51,8 +50,11 @@ int main(int argc, char* argv[])
     }
 
     for (const auto& p : indent) {
-        LOG(INFO) << p.first << ": " << p.second;
+        LOG(INFO) << Logger::CYAN << p.first << ": " << p.second << Logger::END;
     }
 
-    google::ShutdownGoogleLogging();
+    Printer::Printer p;
+    p.SetCode(123);
+    p.Print();
+    Logger::Stop();
 }
