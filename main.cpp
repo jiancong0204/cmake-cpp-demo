@@ -1,3 +1,4 @@
+#include <glog/logging.h>
 #include <json/json.h>
 
 #include <fstream>
