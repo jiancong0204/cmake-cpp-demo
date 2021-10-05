@@ -13,3 +13,11 @@ set_target_properties(third_party_gflags PROPERTIES
   IMPORTED_LOCATION "${GFLAGS_ROOT_DIR}/lib/libgflags.a"
   INTERFACE_INCLUDE_DIRECTORIES "${GFLAGS_ROOT_DIR}/include"
 )
+
+# jsoncpp
+add_library(third_party_jsoncpp SHARED IMPORTED)
+set(JSONCPP_ROOT_DIR "${PROJECT_SOURCE_DIR}/third_party/jsoncpp")
+set_target_properties(third_party_jsoncpp PROPERTIES
+  IMPORTED_LOCATION "${JSONCPP_ROOT_DIR}/lib/libjsoncpp.so"
+  INTERFACE_INCLUDE_DIRECTORIES "${JSONCPP_ROOT_DIR}/include"
+)
