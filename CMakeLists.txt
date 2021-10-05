@@ -4,7 +4,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS True)
 set(CMAKE_BUILD_TYPE Release)
 
 # third-party libs
-include(${PROJECT_SOURCE_DIR}/third-party/third_party.cmake)
+include(${PROJECT_SOURCE_DIR}/third-party/third-party.cmake)
 
 # source code
 include_directories(${PROJECT_SOURCE_DIR}/include)
