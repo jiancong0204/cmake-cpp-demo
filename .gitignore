@@ -1,0 +1,9 @@
+/build/*
+/.vscode/*
+/.idea/*
+
+*/build/*
+*/.vscode/*
+*/.idea/*
+
+*/bin/*
