@@ -7,12 +7,12 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 
 find_package(gflags REQUIRED PATHS ${PROJECT_SOURCE_DIR}/third_party/gflags)
 find_package(glog REQUIRED PATHS ${PROJECT_SOURCE_DIR}/third_party/glog)
+find_package(jsoncpp REQUIRED PATHS ${PROJECT_SOURCE_DIR}/third_party/jsoncpp)
 
 file(GLOB_RECURSE SRCS src/*.cpp)
 add_executable(${PROJECT_NAME} main.cpp ${SRCS})
 
 # jsoncpp
-add_subdirectory(${PROJECT_SOURCE_DIR}/third_party/jsoncpp)
 target_link_libraries(${PROJECT_NAME} jsoncpp)
 
 # glog
