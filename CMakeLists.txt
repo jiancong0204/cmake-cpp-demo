@@ -3,9 +3,11 @@ project(demo)
 set(CMAKE_EXPORT_COMPILE_COMMANDS True)
 set(CMAKE_BUILD_TYPE Release)
 
-include_directories(${PROJECT_SOURCE_DIR}/include)
-include(${PROJECT_SOURCE_DIR}/third_party/third_party.cmake)
+# third-party libs
+include(${PROJECT_SOURCE_DIR}/third-party/third-party.cmake)
 
+# source code
+include_directories(${PROJECT_SOURCE_DIR}/include)
 file(GLOB_RECURSE SRCS src/*.cpp)
 add_executable(${PROJECT_NAME} main.cpp ${SRCS})
 

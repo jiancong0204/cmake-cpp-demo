@@ -1,0 +1,3 @@
+[submodule "third-party"]
+	path = third-party
+	url = git@github.com:jiancong0204/third-party.git
