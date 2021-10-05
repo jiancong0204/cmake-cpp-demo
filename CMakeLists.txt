@@ -6,7 +6,6 @@ set(CMAKE_BUILD_TYPE Release)
 include_directories(${PROJECT_SOURCE_DIR}/include)
 include(${PROJECT_SOURCE_DIR}/third_party/third_party.cmake)
 
-find_package(gflags REQUIRED PATHS ${PROJECT_SOURCE_DIR}/third_party/gflags)
 find_package(jsoncpp REQUIRED PATHS ${PROJECT_SOURCE_DIR}/third_party/jsoncpp)
 
 file(GLOB_RECURSE SRCS src/*.cpp)
@@ -19,4 +18,4 @@ target_link_libraries(${PROJECT_NAME} jsoncpp_lib)
 target_link_libraries(${PROJECT_NAME} third_party_glog)
 
 # gflags
-target_link_libraries(${PROJECT_NAME} gflags)
+target_link_libraries(${PROJECT_NAME} third_party_gflags)
