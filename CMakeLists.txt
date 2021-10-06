@@ -9,6 +9,7 @@ set(THIRD_PARTY_LIBS
   third_party_jsoncpp
   third_party_glog
   third_party_gflags
+  third_party_eigen3
 )
 
 # source code

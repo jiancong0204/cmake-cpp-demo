@@ -1,5 +1,6 @@
 #include <json/json.h>
 
+#include <Eigen/Eigen>
 #include <fstream>
 #include <iostream>
 #include <vector>
@@ -20,6 +21,18 @@ int main(int argc, char* argv[])
     Json::Value root;
 
     std::ifstream jsonFile("test_examples/json_example.json", std::ios::binary);
+
+    Eigen::Vector3d v;
+    v.setZero();
+    LOG(INFO) << v;
+    v << 1, 2, 3;
+    LOG(INFO) << v;
+
+    Eigen::Vector3d vv{2, 3, 4};
+    LOG(INFO) << vv;
+
+    LOG(INFO) << v * vv.transpose();
+    LOG(INFO) << vv.dot(v);
 
     if (!jsonFile.is_open()) {
         LOG(FATAL) << "Error opening";
