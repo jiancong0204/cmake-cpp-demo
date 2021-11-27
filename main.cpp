@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
 
     Json::Value root;
 
-    std::ifstream jsonFile("test_examples/json_example.json", std::ios::binary);
+    std::ifstream jsonFile("/home/jiancong/workspace/cmake-cpp-demo/test_examples/json_example.json", std::ios::binary);
 
     Eigen::Vector3d v;
     v.setZero();
