@@ -1,4 +1,5 @@
 #include <json/json.h>
+#include <omp.h>
 
 #include <Eigen/Eigen>
 #include <fstream>
@@ -29,10 +30,10 @@ int main(int argc, char* argv[])
     LOG(INFO) << v;
 
     Eigen::Vector3d vv{2, 3, 4};
-    LOG(INFO) << vv;
+    LOG(INFO) << std::endl << vv;
 
-    LOG(INFO) << v * vv.transpose();
-    LOG(INFO) << vv.dot(v);
+    LOG(INFO) << std::endl << v * vv.transpose();
+    LOG(INFO) << std::endl << vv.dot(v);
 
     if (!jsonFile.is_open()) {
         LOG(FATAL) << "Error opening";
@@ -69,5 +70,11 @@ int main(int argc, char* argv[])
     Printer::Printer p;
     p.SetCode(123);
     p.Print();
+
+#pragma omp parallel default(none)
+    {
+        LOG(INFO) << omp_get_thread_num();
+    }
+
     Logger::Stop();
 }
